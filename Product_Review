@@ -1,0 +1,55 @@
+# Prodcut Review Analysis 
+# Task 1: Keyword Highlighter
+def highlight_keywords(reviews):
+    keywords = ["good", "excellent", "bad", "poor", "average"]
+    for review in reviews:
+        for keyword in keywords:
+            review = review.replace(keyword, keyword.upper())
+        print(review)
+
+# Task 2: Sentiment Tally
+def tally_sentiments(reviews, positive_words, negative_words):
+    for review in reviews:
+        positive_count = sum(review.lower().count(word) for word in positive_words)
+        negative_count = sum(review.lower().count(word) for word in negative_words)
+        print("Review:", review)
+        print("Positive words count:", positive_count)
+        print("Negative words count:", negative_count)
+        print()
+
+# Task 3: Review Summary
+def generate_summary(review):
+    summary_length = 30
+    if len(review) <= summary_length:
+        return review
+    else:
+        summary = review[:summary_length].rsplit(' ', 1)[0] + "…"
+        return summary
+
+# Sample reviews
+reviews = [
+    "This product is really good. I'm impressed with its quality.",
+    "The performance of this product is excellent. Highly recommended!",
+    "I had a bad experience with this product. It didn't meet my expectations.",
+    "Poor quality product. Wouldn't recommend it to anyone.",
+    "The product was average. Nothing extraordinary about it."
+]
+
+# Task 1: Highlight keywords
+print("Task 1: Keyword Highlighter")
+highlight_keywords(reviews)
+print()
+
+# Task 2: Sentiment Tally
+print("Task 2: Sentiment Tally")
+positive_words = ["good", "excellent", "great", "awesome", "fantastic", "superb", "amazing"]
+negative_words = ["bad", "poor", "terrible", "horrible", "awful", "disappointing", "subpar"]
+tally_sentiments(reviews, positive_words, negative_words)
+print()
+
+# Task 3: Review Summary
+print("Task 3: Review Summary")
+for review in reviews:
+    print("Original Review:", review)
+    print("Summary:", generate_summary(review))
+    print()
